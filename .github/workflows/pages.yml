@@ -5,3 +5,9 @@ on: [push, workflow_dispatch]
 jobs:
   call-workflow:
     uses: dboddie/inferno-ports/.github/workflows/apollo3.yml@main
+  call-workflow:
+    uses: dboddie/inferno-ports/.github/workflows/samd51.yml@main
+  call-workflow:
+    uses: dboddie/inferno-ports/.github/workflows/stm32f405.yml@main
+  call-workflow:
+    uses: dboddie/inferno-ports/.github/workflows/teensy41mm.yml@main
