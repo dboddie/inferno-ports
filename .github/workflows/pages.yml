@@ -2,6 +2,11 @@ name: Create pages
 run-name: Build all Inferno ports
 on: [push, workflow_dispatch]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   call-apollo3-workflow:
     uses: ./.github/workflows/apollo3.yml
