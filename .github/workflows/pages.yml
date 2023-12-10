@@ -3,6 +3,18 @@ run-name: Build all Inferno ports
 on: [push, workflow_dispatch]
 
 jobs:
+  call-apollo3-workflow:
+    uses: ./.github/workflows/apollo3.yml
+  call-samd51-workflow:
+    uses: ./.github/workflows/samd51.yml
+  call-stm32f405-workflow:
+    uses: ./.github/workflows/stm32f405.yml
+  call-teensy41mm-workflow:
+    uses: ./.github/workflows/teensy41mm.yml
+
+  call-hosted-i386-workflow:
+    uses: ./.github/workflows/hosted-i386.yml
+
   make-pages:
     runs-on: ubuntu-latest
     strategy:
@@ -10,17 +22,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Build Inferno for Apollo3
-        uses: ./.github/workflows/apollo3.yml
-      - name: Build Inferno for SAMD51
-        uses: ./.github/workflows/samd51.yml
-      - name: Build Inferno for STM32F405
-        uses: ./.github/workflows/stm32f405.yml
-      - name: Build Inferno for Teensy 4.1 MicroMod
-        uses: ./.github/workflows/teensy41mm.yml
-      - name: Build hosted Inferno for i386
-        uses: ./.github/workflows/hosted-i386.yml
       - name: Download all artifacts
         uses: actions/download-artifact@v3
       - name: Set up Python
         uses: actions/setup-python@v3
+      - name: Look around
+        run: tree
