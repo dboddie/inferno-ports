@@ -12,8 +12,8 @@ jobs:
   call-teensy41mm-workflow:
     uses: ./.github/workflows/teensy41mm.yml
 
-  call-hosted-i386-workflow:
-    uses: ./.github/workflows/hosted-i386.yml
+  call-hosted-386-workflow:
+    uses: ./.github/workflows/hosted-386.yml
 
   make-pages:
     runs-on: ubuntu-latest
