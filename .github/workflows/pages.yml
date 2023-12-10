@@ -16,9 +16,17 @@ jobs:
     uses: ./.github/workflows/hosted-386.yml
 
   make-pages:
+    name: Make a site with the artifacts
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+
+    needs:
+      - call-apollo3-workflow
+      - call-samd51-workflow
+      - call-stm32f405-workflow
+      - call-teensy41mm-workflow
+      - call-hosted-386-workflow
 
     steps:
       - uses: actions/checkout@v3
@@ -28,3 +36,17 @@ jobs:
         uses: actions/setup-python@v3
       - name: Look around
         run: tree
+      - name: Make an index file
+        run: python3 tools/make-index.py
+      - name: Move the data
+        run: |
+          mkdir -p _site
+          cp index.html _site/index.html
+          mv ROMs _site/
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Converted ROMs
+          path: ROMs
+      - name: Upload GitHub Pages artifacts
+        uses: actions/upload-pages-artifact@v0
