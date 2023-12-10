@@ -38,6 +38,6 @@ jobs:
       - name: Archive the build product
         uses: actions/upload-artifact@v3
         with:
-          name: kernel
+          name: stm32f405-kernel
           path: |
             inferno-os/os/stm32f405/kernel
