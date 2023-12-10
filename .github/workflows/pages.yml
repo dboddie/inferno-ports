@@ -1,0 +1,7 @@
+name: Create pages
+run-name: Build Inferno
+on: [push, workflow_dispatch]
+
+jobs:
+  call-workflow:
+    uses: dboddie/inferno-ports/.github/workflows/apollo3.yml@main

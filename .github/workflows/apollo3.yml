@@ -1,6 +1,6 @@
-name: test-builds
-run-name: Build Inferno
-on: [push, workflow_dispatch]
+name: test-apollo3-builds
+run-name: Build Inferno for Apollo3
+on: [workflow_dispatch]
 
 jobs:
   clone-and-build-repo:
