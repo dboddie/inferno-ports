@@ -1,13 +1,13 @@
 name: Create pages
-run-name: Build Inferno
+run-name: Build all Inferno ports
 on: [push, workflow_dispatch]
 
 jobs:
   call-apollo3-workflow:
-    uses: dboddie/inferno-ports/.github/workflows/apollo3.yml@main
+    uses: ./.github/workflows/apollo3.yml
   call-samd51-workflow:
-    uses: dboddie/inferno-ports/.github/workflows/samd51.yml@main
+    uses: ./.github/workflows/samd51.yml
   call-stm32f405-workflow:
-    uses: dboddie/inferno-ports/.github/workflows/stm32f405.yml@main
+    uses: ./.github/workflows/stm32f405.yml
   call-teensy41mm-workflow:
-    uses: dboddie/inferno-ports/.github/workflows/teensy41mm.yml@main
+    uses: ./.github/workflows/teensy41mm.yml
