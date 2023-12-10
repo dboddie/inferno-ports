@@ -21,7 +21,7 @@ repository page to see recent builds.
 
 ## Ports
 
-Builds are performed for the following ports:
+When enabled, builds are performed for the following ports:
 
 * STM32F405
 * SAMD51
@@ -30,3 +30,6 @@ Builds are performed for the following ports:
 * Pi Pico (using [Caerwyn's port](https://github.com/caerwynj/inferno-os/tree/pico))
 
 There is also a build for the hosted i386 version of Inferno.
+
+See the [latest information](https://dboddie.github.io/inferno-ports) for a
+list of the ports that are built using workflows.

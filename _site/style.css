@@ -1,0 +1,29 @@
+body {
+  background: #f0efdf;
+  font-size: 12pt;
+  line-height: 15pt
+}
+
+.centre {
+  text-align: center
+}
+
+h1,h2,h3 {
+  font-family: sans-serif;
+  font-weight: normal
+}
+
+h1 {
+  text-align: center;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em
+}
+
+table {
+  border: solid 1px black;
+  background: #e0e0e0
+}
+
+td {
+  background: white; padding: 4px
+}
