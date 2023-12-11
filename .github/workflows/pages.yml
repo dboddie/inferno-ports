@@ -10,6 +10,8 @@ permissions:
 jobs:
   call-apollo3-workflow:
     uses: ./.github/workflows/apollo3.yml
+  call-rpi-workflow:
+    uses: ./.github/workflows/rpi.yml
   call-samd51-workflow:
     uses: ./.github/workflows/samd51.yml
   call-stm32f405-workflow:
@@ -28,6 +30,7 @@ jobs:
 
     needs:
       - call-apollo3-workflow
+      - call-rpi-workflow
       - call-samd51-workflow
       - call-stm32f405-workflow
       - call-teensy41mm-workflow

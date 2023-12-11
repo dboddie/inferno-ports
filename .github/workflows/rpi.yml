@@ -1,6 +1,6 @@
 name: test-rpi-builds
 run-name: Build Inferno
-on: [push]
+on: [workflow_call, workflow_dispatch]
 
 jobs:
   clone-and-build-repo:
