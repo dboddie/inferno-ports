@@ -27,7 +27,8 @@ When enabled, builds are performed for the following ports:
 * SAMD51
 * Apollo3
 * Teensy 4.1
-* Pi Pico (using [Caerwyn's port](https://github.com/caerwynj/inferno-os/tree/pico))
+* Raspberry Pi 1 or Raspberry Pi Zero (using [yshurik's port](https://github.com/yshurik/inferno-rpi))
+* Raspberry Pi Pico (using [Caerwyn's port](https://github.com/caerwynj/inferno-os/tree/pico))
 
 There is also a build for the hosted i386 version of Inferno.
 
