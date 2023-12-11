@@ -41,4 +41,4 @@ jobs:
         with:
           name: rpi-kernel
           path: |
-            inferno-os/os/rpi/irpi
+            inferno-os/os/rpi/kernel.bin
