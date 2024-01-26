@@ -48,4 +48,4 @@ jobs:
         with:
           name: builds
           path: |
-            inferno-os/builds
+            inferno-os/builds/
