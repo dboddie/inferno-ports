@@ -18,6 +18,8 @@ jobs:
     uses: ./.github/workflows/stm32f405.yml
   call-teensy41mm-workflow:
     uses: ./.github/workflows/teensy41mm.yml
+  call-cortexm-workflow:
+    uses: ./.github/workflows/cortexm.yml
 
   call-hosted-386-workflow:
     uses: ./.github/workflows/hosted-386.yml
@@ -34,6 +36,7 @@ jobs:
       - call-samd51-workflow
       - call-stm32f405-workflow
       - call-teensy41mm-workflow
+      - call-cortexm-workflow
       - call-hosted-386-workflow
 
     steps:

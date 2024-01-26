@@ -1,0 +1,51 @@
+name: test-builds
+run-name: Build Inferno
+on: [workflow_call, workflow_dispatch]
+
+jobs:
+  clone-and-build-repo:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Get dependencies
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt-get update
+          sudo apt-get install -y libc6-dev-i386 python3-intelhex
+      - name: Clone the repository
+        run: git clone -b cortexm https://github.com/dboddie/inferno-os.git inferno-os
+      - name: Build the host system
+        run: |
+          cd $GITHUB_WORKSPACE/inferno-os
+          sed -ri 's|/usr\/inferno|'$PWD'|' mkconfig
+          sed -ri 's/SYSHOST=Plan9/SYSHOST=Linux/' mkconfig
+          sed -ri 's/#OBJTYPE/OBJTYPE/' mkconfig
+          sed -ri 's/OBJTYPE=\$/#OBJTYPE=\$/' mkconfig
+          sed -ri 's/\temu/#\temu/' mkfile
+          ./makemk.sh
+          export PATH=$PWD/Linux/386/bin/:$PATH
+          mk nuke
+          mk mkdirs
+          mk install
+      - name: Build the ports
+        run: |
+          cd $GITHUB_WORKSPACE/inferno-os
+          export PATH=$PWD/Linux/386/bin/:$PATH
+          mkdir builds
+          pushd os/stm32f405
+          mk
+          cp kernel ../../builds/stm32f405-kernel
+          popd
+          pushd os/apollo3
+          mk
+          cp kernel ../../builds/apollo3-kernel
+          popd
+          pushd os/teensy41mm
+          mk
+          cp kernel.hex ../../builds/teensy41mm-kernel.hex
+          popd
+      - name: Archive the build product
+        uses: actions/upload-artifact@v4
+        with:
+          name: builds
+          path: |
+            inferno-os/builds
