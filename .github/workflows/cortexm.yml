@@ -46,6 +46,6 @@ jobs:
       - name: Archive the build product
         uses: actions/upload-artifact@v3
         with:
-          name: builds
+          name: cortexm-builds
           path: |
             inferno-os/cortexm-builds/
