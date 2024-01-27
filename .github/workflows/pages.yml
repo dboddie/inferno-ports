@@ -50,6 +50,7 @@ jobs:
       - name: Move the data
         run: |
           mv *-kernel _site/
+          mv cortexm-builds _site/
       - name: Upload GitHub Pages artifacts
         uses: actions/upload-pages-artifact@v2
 

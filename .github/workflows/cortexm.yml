@@ -30,22 +30,22 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/inferno-os
           export PATH=$PWD/Linux/386/bin/:$PATH
-          mkdir builds
+          mkdir cortexm-builds
           pushd os/stm32f405
           mk
-          cp kernel ../../builds/stm32f405-kernel
+          cp kernel ../../cortexm-builds/stm32f405-kernel
           popd
           pushd os/apollo3
           mk
-          cp kernel ../../builds/apollo3-kernel
+          cp kernel ../../cortexm-builds/apollo3-kernel
           popd
           pushd os/teensy41mm
           mk
-          cp kernel.hex ../../builds/teensy41mm-kernel.hex
+          cp kernel.hex ../../cortexm-builds/teensy41mm-kernel.hex
           popd
       - name: Archive the build product
         uses: actions/upload-artifact@v3
         with:
           name: builds
           path: |
-            inferno-os/builds/
+            inferno-os/cortexm-builds/
