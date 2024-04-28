@@ -16,6 +16,7 @@ jobs:
       - name: Build the host system
         run: |
           cd $GITHUB_WORKSPACE/inferno-os
+          git submodule update --init
           sed -ri 's|/usr\/inferno|'$PWD'|' mkconfig
           sed -ri 's/SYSHOST=Plan9/SYSHOST=Linux/' mkconfig
           sed -ri 's/#OBJTYPE/OBJTYPE/' mkconfig
