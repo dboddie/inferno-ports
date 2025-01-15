@@ -20,6 +20,8 @@ jobs:
     uses: ./.github/workflows/teensy41mm.yml
   call-cortexm-workflow:
     uses: ./.github/workflows/cortexm.yml
+  call-picoplus2-workflow:
+    uses: ./.github/workflows/picoplus2.yml
 
   call-hosted-386-workflow:
     uses: ./.github/workflows/hosted-386.yml
@@ -37,6 +39,7 @@ jobs:
       - call-stm32f405-workflow
       - call-teensy41mm-workflow
       - call-cortexm-workflow
+      - call-picoplus2-workflow
       - call-hosted-386-workflow
 
     steps:
