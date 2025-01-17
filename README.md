@@ -29,6 +29,7 @@ When enabled, builds are performed for the following ports:
 * Teensy 4.1
 * Raspberry Pi 1 or Raspberry Pi Zero (using [yshurik's port](https://github.com/yshurik/inferno-rpi))
 * Raspberry Pi Pico (using [Caerwyn's port](https://github.com/caerwynj/inferno-os/tree/pico))
+* Pimoroni Pico Plus 2
 
 There is also a build for the hosted i386 version of Inferno.
 
