@@ -36,6 +36,7 @@ jobs:
       - name: Create a UF2 file
         run: |
           cd $GITHUB_WORKSPACE/inferno-os
+          export PATH=$PWD/Linux/386/bin/:$PATH
           cd os/picoplus2
           git clone https://github.com/microsoft/uf2
           export PATH=$PWD/uf2/utils/:$PATH
