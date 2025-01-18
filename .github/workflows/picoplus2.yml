@@ -33,9 +33,16 @@ jobs:
           cd os/picoplus2
           mk appl
           mk
+      - name: Create a UF2 file
+        run: |
+          cd $GITHUB_WORKSPACE/inferno-os
+          cd os/picoplus2
+          git clone https://github.com/microsoft/uf2
+          export PATH=$PWD/uf2/utils/:$PATH
+          mk uf2
       - name: Archive the build product
         uses: actions/upload-artifact@v3
         with:
           name: picoplus2-kernel
           path: |
-            inferno-os/os/picoplus2/kernel
+            inferno-os/os/picoplus2/inferno.uf2
