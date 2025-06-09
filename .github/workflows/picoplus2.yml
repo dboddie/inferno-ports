@@ -20,12 +20,14 @@ jobs:
           sed -ri 's/SYSHOST=Plan9/SYSHOST=Linux/' mkconfig
           sed -ri 's/#OBJTYPE/OBJTYPE/' mkconfig
           sed -ri 's/OBJTYPE=\$/#OBJTYPE=\$/' mkconfig
-          sed -ri 's/\temu/#\temu/' mkfile
+          sed -ri 's/\tdraw/#\tdraw/' libinterp/mkfile
+          sed -ri 's/\ttk/#\ttk/' libinterp/mkfile
           ./makemk.sh
           export PATH=$PWD/Linux/386/bin/:$PATH
           mk nuke
           mk mkdirs
-          mk install
+          mk CONF=emu-g install
+          ln -s Linux/386/bin/emu-g Linux/386/bin/emu
       - name: Build a port
         run: |
           cd $GITHUB_WORKSPACE/inferno-os
