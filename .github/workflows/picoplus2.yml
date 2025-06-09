@@ -31,6 +31,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/inferno-os
           ln -s Linux/386/bin/emu-g Linux/386/bin/emu
+          ls Linux/386/bin
           export PATH=$PWD/Linux/386/bin/:$PATH
           cd os/picoplus2
           mk appl
