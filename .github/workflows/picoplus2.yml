@@ -27,7 +27,6 @@ jobs:
           mk nuke
           mk mkdirs
           mk CONF=emu-g install
-          ln -s Linux/386/bin/emu-g Linux/386/bin/emu
       - name: Build a port
         run: |
           cd $GITHUB_WORKSPACE/inferno-os
@@ -35,6 +34,7 @@ jobs:
           cd os/picoplus2
           mk appl
           mk
+          ln -s Linux/386/bin/emu-g Linux/386/bin/emu
           mk uf2
       - name: Archive the build product
         uses: actions/upload-artifact@v4
