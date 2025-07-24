@@ -32,14 +32,11 @@ jobs:
           cd $GITHUB_WORKSPACE/inferno-os
           ln -s Linux/386/bin/emu-g Linux/386/bin/emu
           export PATH=$PWD/Linux/386/bin/:$PATH
-          cd os/picoplus2
-          mk appl
-          mk
-          ls -l $GITHUB_WORKSPACE/inferno-os/Linux/386/bin
-          mk uf2
+          cd os/rp2350
+          mk CONF=picoplus2.conf
       - name: Archive the build product
         uses: actions/upload-artifact@v4
         with:
           name: picoplus2-kernel
           path: |
-            inferno-os/os/picoplus2/inferno.uf2
+            inferno-os/os/rp2350/inferno.uf2
