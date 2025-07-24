@@ -62,7 +62,7 @@ jobs:
           sed -ri 's|strip |arm-none-eabi-strip |' mkfile
           PATH=../../../pico-sdk/tools/elf2uf2:$PATH mk
       - name: Archive the build product
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ipico
           path: |

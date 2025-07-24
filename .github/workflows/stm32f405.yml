@@ -36,7 +36,7 @@ jobs:
           cd os/stm32f405
           mk
       - name: Archive the build product
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: stm32f405-kernel
           path: |
