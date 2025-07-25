@@ -31,7 +31,6 @@ jobs:
       - name: Build a port
         run: |
           cd $GITHUB_WORKSPACE/inferno-os
-          ln -s Linux/386/bin/emu-g Linux/386/bin/emu
           export PATH=$PWD/Linux/386/bin/:$PATH
           cd os/rp2350
           mk appl
