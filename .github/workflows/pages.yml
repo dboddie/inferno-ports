@@ -55,7 +55,7 @@ jobs:
           mv *-kernel _site/
           mv cortexm-builds _site/
       - name: Upload GitHub Pages artifacts
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
 
   deploy:
 
@@ -68,4 +68,4 @@ jobs:
     steps:
       - name: Deploy GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
