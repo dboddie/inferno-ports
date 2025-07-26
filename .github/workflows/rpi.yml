@@ -22,8 +22,7 @@ jobs:
           sed -ri 's/OBJTYPE=\$/#OBJTYPE=\$/' mkconfig
           sed -ri 's/\temu/#\temu/' mkfile
           sed -ri 's/cp irpi/#cp irpi/' os/rpi/mkfile
-          echo '14a14
-> #define pthread_yield() (sched_yield())' | patch emu/port/kproc-pthreads.c
+          sed -i '15i #define pthread_yield() (sched_yield())' emu/port/kproc-pthreads.c
           ./makemk.sh
           export PATH=$PWD/Linux/386/bin/:$PATH
           mk nuke
