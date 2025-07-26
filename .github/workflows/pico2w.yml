@@ -1,0 +1,43 @@
+name: test-pico2w-builds
+run-name: Build Inferno for Pico 2W
+on: [workflow_call, workflow_dispatch]
+
+jobs:
+  clone-and-build-repo:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Get dependencies
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt-get update
+          sudo apt-get install -y libc6-dev-i386
+      - name: Clone the repository
+        run: git clone -b rp2350 https://github.com/dboddie/inferno-os.git inferno-os
+      - name: Build the host system
+        run: |
+          cd $GITHUB_WORKSPACE/inferno-os
+          sed -ri 's|/usr\/inferno|'$PWD'|' mkconfig
+          sed -ri 's/SYSHOST=Plan9/SYSHOST=Linux/' mkconfig
+          sed -ri 's/#OBJTYPE/OBJTYPE/' mkconfig
+          sed -ri 's/OBJTYPE=\$/#OBJTYPE=\$/' mkconfig
+          sed -ri 's/\tdraw/#\tdraw/' libinterp/mkfile
+          sed -ri 's/\ttk/#\ttk/' libinterp/mkfile
+          ./makemk.sh
+          export PATH=$PWD/Linux/386/bin/:$PATH
+          mk nuke
+          mk mkdirs
+          mk CONF=emu-g install
+          cp Linux/386/bin/emu-g Linux/386/bin/emu
+      - name: Build a port
+        run: |
+          cd $GITHUB_WORKSPACE/inferno-os
+          export PATH=$PWD/Linux/386/bin/:$PATH
+          cd os/rp2350
+          mk appl
+          mk CONF=pico2w.conf
+      - name: Archive the build product
+        uses: actions/upload-artifact@v4
+        with:
+          name: pico2w-kernel
+          path: |
+            inferno-os/os/rp2350/inferno.uf2

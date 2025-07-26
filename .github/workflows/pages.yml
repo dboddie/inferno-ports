@@ -22,6 +22,10 @@ jobs:
     uses: ./.github/workflows/cortexm.yml
   call-picoplus2-workflow:
     uses: ./.github/workflows/picoplus2.yml
+  call-plus2w-workflow:
+    uses: ./.github/workflows/pico2w.yml
+  call-feather2350-workflow:
+    uses: ./.github/workflows/feather2350.yml
 
   call-hosted-386-workflow:
     uses: ./.github/workflows/hosted-386.yml
